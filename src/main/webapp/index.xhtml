@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Gerenciamento de Padaria</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="images" name="style.css"/>
+        <p:ribbon>
+            <p:tab title="Sistema">
+                <p:ribbonGroup label="Caixa" style="font-size: 16px">
+                    <p:link value="Caixa" outcome="caixa.xhtml" style="font-size: 16px" />
+                </p:ribbonGroup>
+                <p:ribbonGroup label="Produtos" style="font-size: 16px">
+                    <p:link value="Gerenciar produtos" outcome="manterProduto.xhtml" style="font-size: 16px" />&nbsp;
+                    <p:link value="Vencimentos de produtos" outcome="vencimentos.xhtml" style="font-size: 16px" />&nbsp;
+                    <p:link value="Relatório de estoque" outcome="estoque.xhtml" style="font-size: 16px" />
+                </p:ribbonGroup>
+                <p:ribbonGroup label="Produção" style="font-size: 16px">
+                    <p:link value="Receitas" outcome="manterReceitas.xhtml" style="font-size: 16px" />&nbsp;
+                    <p:link value="Ordem de produção" outcome="ordemProducao.xhtml" style="font-size: 16px"  />&nbsp;
+                    <p:link value="Relatório de produção" outcome="relatorioProducao.xhtml" style="font-size: 16px" />&nbsp;
+                </p:ribbonGroup>
+            </p:tab>
+        </p:ribbon>
+        <h:graphicImage id="img" value="/images/panificacao.jpg" styleClass="mainBackground" />
+        <!--
+        <h:link value="Manter produtos" outcome="manterProduto.xhtml" style="font-size: 16px"/><br/>
+        <h:link value="Controle de vencimentos" outcome="vencimentos.xhtml" style="font-size: 16px" /><br/>
+        <h:link value="Receitas" outcome="manterReceitas.xhtml" /><br/>
+        <h:link value="Ordem de produção" outcome="ordemProducao.xhtml" /><br/>
+        <h:link value="Relatório de produção" outcome="relatorioProducao.xhtml"/><br/>
+        <h:link value="Relatório de estoque" outcome="estoque.xhtml"/><br/>
+        <h:link value="Caixa" outcome="caixa.xhtml" /><br/>
+        -->
+    </h:body>
+</html>
+

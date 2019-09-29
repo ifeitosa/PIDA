@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Caixa</title>
+    </h:head>
+    <h:body>
+        <p:linkButton outcome="index" value="Menu" style="align-self: flex-end" />
+        <h:form id="form">
+            <p:growl id="messages"/>
+            <p:panelGrid columns="4">
+                <p:commandButton value="Nova compra" action="#{caixa.novaCompra}" update="@form" />
+                <p:outputLabel value="" />
+                <p:outputLabel value="" />
+                <p:outputLabel value="" />
+                <p:outputLabel value="Código de barras:" />
+                <p:autoComplete value="#{caixa.codigoBarras}" completeMethod="#{caixa.completarCodigoBarras}" minQueryLength="3" maxlength="13" required="true" requiredMessage="Insira o código de barras de produto."/>
+                <p:commandButton value="Adicionar" action="#{caixa.adicionarItem}" update="@form"/>
+                <p:commandButton value="Estornar" action="#{caixa.estornarItem}" update="@form" />
+            </p:panelGrid>
+            <p:dataTable rows="30" emptyMessage="Nenhum produto adicionado" liveScroll="true"
+                         stickyHeader="true" summary="true"
+                         value="#{caixa.itens}" var="item">
+                <f:facet name="header">
+                    Produtos no carrinho
+                </f:facet>
+                <p:column headerText="Produto">
+                    <p:outputLabel value="#{item.produto.produto}" />
+                </p:column>
+                <p:column headerText="Quantidade">
+                    <p:outputLabel value="#{item.quantidade}">
+                        <f:convertNumber type="number" />
+                    </p:outputLabel>
+                </p:column>
+                <p:column headerText="Preço unitário">
+                    <p:outputLabel value="#{item.precoVenda}">
+                        <f:convertNumber type="currency" currencySymbol="R$" />
+                    </p:outputLabel>
+                </p:column>
+                <p:columnGroup type="footer">
+                    <p:row>
+                        <p:column colspan="2" style="text-align: right" footerText="Total:" />
+                        <p:column footerText="#{caixa.total}" />
+                    </p:row>
+                </p:columnGroup>                
+            </p:dataTable>
+            <p:commandButton value="Finalizar compra" action="#{caixa.finalizarCompra}" update="@form" />
+            
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ordem de produção</title>
+    </h:head>
+    <h:body>
+        <p:linkButton outcome="index" value="Menu" style="align-self: flex-end" />
+        <h1><center>Ordem de produção</center></h1>
+        <h:form id="form">
+            <p:growl id="growl" showDetail="true" showSummary="true"/>
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Receita:" />
+                <p:selectOneMenu value="#{ordemProducao.ordem.receita.nome}">
+                    <f:selectItems value="#{ordemProducao.listaDeReceitas()}" />
+                </p:selectOneMenu>
+                <p:outputLabel value="Quantidade:" />
+                <p:inputNumber value="#{ordemProducao.ordem.quantidade}" decimalPlaces="0" thousandSeparator="" minValue="1" required="" requiredMessage="Informar quantidade da ordem" />
+                <p:commandButton value="Emitir ordem" action="#{ordemProducao.emitirOrdem()}" update="@form"/>
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
