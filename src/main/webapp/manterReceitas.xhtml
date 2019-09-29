@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Manter Receitas</title>
+    </h:head>
+    <h:body>
+        <p:linkButton outcome="index" value="Menu" style="align-self: flex-end" />
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true" />
+            <p:panelGrid columns="3">
+                <p:outputLabel value="Nova receita?" />
+                <p:commandButton value="Nova receita" action="#{receita.novaReceita}" update="@form"/>
+                <p:outputLabel value="" />
+                <p:outputLabel value="Receita:" />
+                <p:autoComplete value="#{receita.receita.nome}" completeMethod="#{receita.completar}" emptyMessage="Sem sugestões" minQueryLength="3" resultsMessage="Nome da receita" queryDelay="100" required="true" requiredMessage="Nome da receita requerido"/>
+                <p:commandButton value="Selecionar" action="#{receita.selecionarReceita}" update="@form"/>
+                <p:outputLabel value="Data de registro:" />
+                <p:calendar value="#{receita.receita.registro}" pattern="dd/MM/yyyy" timeZone="America/SaoPaulo"  />
+                <p:outputLabel />
+            </p:panelGrid>
+            <p:dataTable value="#{receita.receita.itens}" var="ir" 
+                         rows="50" emptyMessage="Sem itens registrados" paginator="true"
+                         paginatorPosition="bottom"
+                         editable="true" id="grid">
+                <p:ajax event="rowEdit" listener="#{receita.rowEditHandler}"/>
+
+                <p:column headerText="IdProduto">
+                    <p:cellEditor>
+                        <f:facet name="output"><p:outputLabel value="#{ir.produtoId}"/></f:facet>
+                        <f:facet name="input"><p:outputLabel value="#{ir.produtoId}"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Produto">
+                    <p:cellEditor>
+                        <f:facet name="output"><p:outputLabel value="#{ir.produto}"/></f:facet>
+                        <f:facet name="input"><p:outputLabel value="#{ir.produto}"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Quantidade">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{ir.quantidade}">
+                                <f:convertNumber locale="pt_BR" />
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input"><p:inputNumber value="#{ir.quantidade}" decimalPlaces="4" decimalSeparator="," /></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Unidade">
+                    <p:cellEditor>
+                        <f:facet name="output"><p:outputLabel value="#{ir.unidade}"/></f:facet>
+                        <f:facet name="input">
+                            <p:selectOneMenu value="#{ir.unidade}" >
+                                <f:selectItem itemLabel="Unidade" itemValue="UN" />
+                                <f:selectItem itemLabel="Kilo" itemValue="KG" />
+                                <f:selectItem itemLabel="Litro" itemValue="L" />
+                            </p:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Edição">
+                    <p:rowEditor/>
+                </p:column>
+                <p:column headerText="Excluir">
+                    <h:commandButton value="Excluir" action="#{receita.deletarItem(ir)}" />
+                </p:column>
+            </p:dataTable>
+            <p:commandButton value="Adicionar item à receita" onclick="PF('dlg').show()" />
+            <p:dialog widgetVar="dlg" draggable="true" header="Adicionar item à receita" closable="true"
+                      closeOnEscape="true" modal="true" responsive="true">
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Produto" />
+                    <p:selectOneMenu value="#{receita.itemReceita.produto}" >
+                        <f:selectItems value="#{receita.nomeProdutos}" />
+                    </p:selectOneMenu>
+                    <p:outputLabel value="Quantidade" />
+                    <p:inputNumber value="#{receita.itemReceita.quantidade}" decimalPlaces="4" decimalSeparator="," />
+                    <p:outputLabel value="Unidade" />
+                    <p:selectOneMenu value="#{receita.itemReceita.unidade}" >
+                        <f:selectItem itemLabel="Unidade" itemValue="UN" />
+                        <f:selectItem itemLabel="Kilo" itemValue="KG" />
+                        <f:selectItem itemLabel="Litro" itemValue="L" />
+                    </p:selectOneMenu>
+                    <p:commandButton value="Adicionar" action="#{receita.adicionarItemReceita}" update=":form"/>
+                    <p:commandButton value="Cancelar" onclick="PF('dlg').hide()" />
+                </p:panelGrid>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+

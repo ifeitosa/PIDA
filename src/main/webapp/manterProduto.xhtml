@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Manter Produto</title>
+    </h:head>
+    <h:body>
+        <p:linkButton outcome="index" value="Menu" style="align-self: flex-end" />
+        <h1>Produtos</h1>
+        <h:form id="form">
+            <p:growl id="mensagens" showDetail="true"/>
+            <p:panelGrid columns="3">
+                <p:outputLabel value="Código de barras:" />
+                <p:inputText value="#{produto.produto.codigoBarras}" maxlength="13" required="true" requiredMessage="O código de barras deve possuir 13 dígitos." />
+                <p:commandButton value="Buscar" action="#{produto.buscarProduto()}" update="@form"/>
+                <p:outputLabel value="Produto:" />
+                <p:inputText maxlength="200" value="#{produto.produto.produto}" />
+                <p:outputLabel value="" />
+                <p:outputLabel value="Preço de venda (R$):" />
+                <p:inputNumber value="#{produto.produto.preçoVenda}" decimalPlaces="2" decimalSeparator="," thousandSeparator=""/>
+                <p:outputLabel value=""/>
+                <p:commandButton value="Salvar" action="#{produto.salvarProduto()}" update="@form"/>
+                <p:commandButton value="Cancelar"/>
+                <p:outputLabel value=""/>
+            </p:panelGrid>            
+            <p:dataTable id="lotes" value="#{produto.produto.lotes}" var="l" editable="true" 
+                         emptyMessage="Nenhum lote cadastrado" 
+                         rows="10" paginator="true" paginatorPosition="bottom">
+
+                <p:column headerText="Lote">
+                    <p:cellEditor>
+                        <f:facet name="output"><p:outputLabel value="#{l.id}" /></f:facet>
+                        <f:facet name="input"><p:outputLabel value="#{l.id}" /></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Quantidade">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{l.quantidade}">
+                                <f:convertNumber locale="pt_BR" />
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input"><p:inputNumber value="#{l.quantidade}" decimalPlaces="4" decimalSeparator="," /></f:facet>         
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Vencimento">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{l.vencimento}">
+                                <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="America/SaoPaulo"/>
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:calendar value="#{l.vencimento}" pattern="dd/MM/yyyy" timeZone="America/SaoPaulo"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Editar">
+                    <p:rowEditor/>
+                </p:column>
+            </p:dataTable>
+            <p:commandButton value="Adicionar lote" onclick="PF('dlg').show()"/>
+            <p:dialog widgetVar="dlg" modal="true" draggable="true" showEffect="fade" hideEffect="fade"
+                      closeOnEscape="true" responsive="true"
+                      header="Adicionar lote">
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Quantidade"/>
+                    <p:inputNumber decimalPlaces="4" decimalSeparator="," value="#{produto.lote.quantidade}"/>
+                    <p:outputLabel value="Vencimento" />
+                    <p:calendar value="#{produto.lote.vencimento}" pattern="dd/MM/yyyy" timeZone="America/SaoPaulo" />
+                    <p:commandButton value="Adicionar" action="#{produto.adicionarLote()}" onclick="PF('dlg').hide()" update="@form"/>
+                    <p:commandButton value="Cancelar" onclick="PF('dlg').hide()" />
+                </p:panelGrid>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+

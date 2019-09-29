@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Relatório de Produção</title>
+    </h:head>
+    <h:body>
+        <script type="text/javascript">
+            PrimeFaces.locales['pt_BR'] = { 
+                closeText: 'Fechar', 
+                prevText: 'Anterior', 
+                nextText: 'Próximo', 
+                currentText: 'Começo', 
+                monthNames: ['Janeiro',
+                    'Fevereiro',
+                    'Março',
+                    'Abril',
+                    'Maio',
+                    'Junho',
+                    'Julho',
+                    'Agosto',
+                    'Setembro',
+                    'Outubro',
+                    'Novembro',
+                    'Dezembro'],
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'], 
+                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'], 
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'], 
+                dayNamesMin: ['D','S','T','Q','Q','S','S'], 
+                weekHeader: 'Semana', 
+                firstDay: 1, 
+                isRTL: false, 
+                showMonthAfterYear: false, 
+                yearSuffix: '', 
+                timeOnlyTitle: 'Só Horas', 
+                timeText: 'Tempo', 
+                hourText: 'Hora', 
+                minuteText: 'Minuto', 
+                secondText: 'Segundo', 
+                currentText: 'Data Atual', 
+                ampm: false, 
+                month: 'Mês', 
+                week: 'Semana', 
+                day: 'Dia', 
+                allDayText : 'Todo Dia' };
+        </script>
+        <p:linkButton outcome="index" value="Menu" style="align-self: flex-end" />
+        <h1><center>Relatório de Produção</center></h1>
+        <p:schedule value="#{relatorioProducao.lazyModel}"
+                    clientTimeZone="America/SaoPaulo" 
+                    resizable="false" tooltip="true"
+                    draggable="false" locale="pt_BR"/>
+    </h:body>
+</html>
+
