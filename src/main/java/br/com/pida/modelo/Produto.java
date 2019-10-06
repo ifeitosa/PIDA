@@ -97,10 +97,7 @@ public class Produto implements Serializable {
         if (!Objects.equals(this.produto, other.produto)) {
             return false;
         }
-        if (!Objects.equals(this.preçoVenda, other.preçoVenda)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.precoVenda, other.precoVenda);
     }
 
     public void setLotes(List<Lote> lotes) {

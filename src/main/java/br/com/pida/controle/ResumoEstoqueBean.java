@@ -20,11 +20,10 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class ResumoEstoqueBean implements Serializable {
     
-    private ResumoEstoqueDAO dao;
     private List<ResumoEstoque> resumo;
     
     public ResumoEstoqueBean() {
-        dao = new ResumoEstoqueDAO();
+        ResumoEstoqueDAO dao = new ResumoEstoqueDAO();
         resumo = dao.obterListaEstoque();
     }
 
