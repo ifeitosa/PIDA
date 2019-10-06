@@ -52,10 +52,7 @@ public class Lote implements Serializable {
             return false;
         }
         final Lote other = (Lote) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
+        return this.id == other.id;
     }
 
     public int getId() {
