@@ -6,7 +6,7 @@
 package br.com.pida.controle;
 
 
-import br.com.pida.DAO.OrdemProducaoDAO;
+import br.com.pida.dao.OrdemProducaoDAO;
 import br.com.pida.event.OrdemProducaoScheduleEvent;
 import br.com.pida.modelo.OrdemProducao;
 import java.util.Date;

@@ -5,8 +5,8 @@
  */
 package br.com.pida.controle;
 
-import br.com.pida.DAO.OrdemProducaoDAO;
-import br.com.pida.DAO.ReceitaDAO;
+import br.com.pida.dao.OrdemProducaoDAO;
+import br.com.pida.dao.ReceitaDAO;
 import br.com.pida.modelo.OrdemProducao;
 import br.com.pida.modelo.Produto;
 import br.com.pida.modelo.Receita;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.pida.DAO;
+package br.com.pida.dao;
 
 import br.com.pida.conexao.ConectarBD;
 import br.com.pida.modelo.Lote;
@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import br.com.pida.modelo.Produto;
 import br.com.pida.util.DateUtil;
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -38,7 +37,7 @@ public class ProdutoDAO implements Serializable {
             ps = con.prepareStatement(sql);
             ps.setString(1, produto.getCodigoBarras());
             ps.setString(2, produto.getProduto());
-            ps.setDouble(3, produto.getPreçoVenda());
+            ps.setDouble(3, produto.getPrecoVenda());
             ps.execute();
 
             return true;
@@ -54,7 +53,7 @@ public class ProdutoDAO implements Serializable {
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, produto.getProduto());
-            ps.setDouble(2, produto.getPreçoVenda());
+            ps.setDouble(2, produto.getPrecoVenda());
             ps.setString(3, produto.getCodigoBarras());
             ps.execute();
         } catch (SQLException ex) {
@@ -92,7 +91,7 @@ public class ProdutoDAO implements Serializable {
                 produto.setId(rs.getInt("IdProduto"));
                 produto.setCodigoBarras(rs.getString("CodigoBarras"));
                 produto.setProduto(rs.getString("Produto"));
-                produto.setPreçoVenda(rs.getDouble("PrecoVenda"));
+                produto.setPrecoVenda(rs.getDouble("PrecoVenda"));
 
                 ArrayList<Lote> lotes = new ArrayList<>();
                 sql = "SELECT IdLote, Quantidade, Vencimento FROM Lote WHERE Produto = ? AND Quantidade > 0 ORDER BY Vencimento";
@@ -211,7 +210,7 @@ public class ProdutoDAO implements Serializable {
                     produto.setCodigoBarras(rs.getString("CodigoBarras"));
                     produto.setId(rs.getInt("IdProduto"));
                     produto.setProduto(rs.getString("Produto.Produto"));
-                    produto.setPreçoVenda(rs.getDouble("PrecoVenda"));
+                    produto.setPrecoVenda(rs.getDouble("PrecoVenda"));
                     Lote lote = new Lote(rs.getInt("IdLote"), rs.getDouble("Quantidade"), DateUtil.fromDatabase(rs.getDate("Vencimento")));
                     produto.getLotes().add(lote);
                     produtos.add(produto);
@@ -240,7 +239,7 @@ public class ProdutoDAO implements Serializable {
         return resultado;
     }
 
-    Produto produtoPorNome(String produto) {
+    public Produto produtoPorNome(String produto) {
         con = ConectarBD.abrirConexao();
         sql = sql = "SELECT IdProduto, CodigoBarras, Produto, PrecoVenda FROM Produto WHERE Produto = ?";
         try {
@@ -252,7 +251,7 @@ public class ProdutoDAO implements Serializable {
                 prod.setCodigoBarras(rs.getString("CodigoBarras"));
                 prod.setId(rs.getInt("IdProduto"));
                 prod.setProduto(rs.getString("Produto"));
-                prod.setPreçoVenda(rs.getDouble("PrecoVenda"));
+                prod.setPrecoVenda(rs.getDouble("PrecoVenda"));
                 return prod;
             }
         } catch (SQLException ex) {

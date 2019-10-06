@@ -54,11 +54,11 @@ public class Produto implements Serializable {
         this.produto = produto;
     }
 
-    public Double getPreçoVenda() {
+    public Double getPrecoVenda() {
         return preçoVenda;
     }
 
-    public void setPreçoVenda(Double preçoVenda) {
+    public void setPrecoVenda(Double preçoVenda) {
         this.preçoVenda = preçoVenda;
     }
 
@@ -107,7 +107,7 @@ public class Produto implements Serializable {
         this.lotes = lotes;
     }
     
-    public boolean codigoDeBarrasVálido() {
+    public boolean codigoDeBarrasValido() {
         if (codigoBarras.trim().length() != 13) {
             return false;
         }

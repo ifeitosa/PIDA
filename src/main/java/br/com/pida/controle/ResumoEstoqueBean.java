@@ -5,7 +5,7 @@
  */
 package br.com.pida.controle;
 
-import br.com.pida.DAO.ResumoEstoqueDAO;
+import br.com.pida.dao.ResumoEstoqueDAO;
 import br.com.pida.modelo.ResumoEstoque;
 import java.io.Serializable;
 import java.util.List;

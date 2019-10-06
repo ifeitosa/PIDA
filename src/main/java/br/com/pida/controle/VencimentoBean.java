@@ -5,7 +5,7 @@
  */
 package br.com.pida.controle;
 
-import br.com.pida.DAO.ProdutoDAO;
+import br.com.pida.dao.ProdutoDAO;
 import br.com.pida.event.VencimentoScheduleEvent;
 import br.com.pida.modelo.Lote;
 import br.com.pida.modelo.Produto;

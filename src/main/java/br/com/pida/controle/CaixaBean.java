@@ -5,8 +5,8 @@
  */
 package br.com.pida.controle;
 
-import br.com.pida.DAO.ProdutoDAO;
-import br.com.pida.DAO.TransaçãoDAO;
+import br.com.pida.dao.ProdutoDAO;
+import br.com.pida.dao.TransaçãoDAO;
 import br.com.pida.modelo.ItemTransação;
 import br.com.pida.modelo.Produto;
 import br.com.pida.modelo.Transação;

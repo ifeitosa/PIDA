@@ -5,8 +5,8 @@
  */
 package br.com.pida.controle;
 
-import br.com.pida.DAO.ProdutoDAO;
-import br.com.pida.DAO.ReceitaDAO;
+import br.com.pida.dao.ProdutoDAO;
+import br.com.pida.dao.ReceitaDAO;
 import br.com.pida.modelo.ItemReceita;
 import br.com.pida.modelo.Receita;
 import java.util.List;
@@ -28,7 +28,6 @@ public class ReceitaBean {
     private Receita receita;
     private ReceitaDAO receitaDAO;
     private ProdutoDAO produtoDAO;
-    private List<String> listaProdutos;
     private ItemReceita itemReceita;
 
     public ReceitaBean() {

@@ -5,7 +5,7 @@
  */
 package br.com.pida.modelo;
 
-import br.com.pida.DAO.ProdutoDAO;
+import br.com.pida.dao.ProdutoDAO;
 import java.io.Serializable;
 
 /**
