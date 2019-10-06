@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.pida.DAO;
+package br.com.pida.dao;
 
 import br.com.pida.conexao.ConectarBD;
 import br.com.pida.modelo.ItemTransação;

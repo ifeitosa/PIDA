@@ -20,7 +20,7 @@ public class ItemTransação {
     public ItemTransação(Transação transação, Produto produto, double quantidade) {
         transacao = transação;
         this.produto = produto;
-        precoVenda = produto.getPreçoVenda();
+        precoVenda = produto.getPrecoVenda();
         this.quantidade = quantidade;
     }
 

@@ -5,9 +5,6 @@
  */
 package br.com.pida.util;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 /**
  *
  * @author italo

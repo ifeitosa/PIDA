@@ -21,7 +21,7 @@
                 <p:inputText maxlength="200" value="#{produto.produto.produto}" />
                 <p:outputLabel value="" />
                 <p:outputLabel value="Preço de venda (R$):" />
-                <p:inputNumber value="#{produto.produto.preçoVenda}" decimalPlaces="2" decimalSeparator="," thousandSeparator=""/>
+                <p:inputNumber value="#{produto.produto.precoVenda}" decimalPlaces="2" decimalSeparator="," thousandSeparator=""/>
                 <p:outputLabel value=""/>
                 <p:commandButton value="Salvar" action="#{produto.salvarProduto()}" update="@form"/>
                 <p:commandButton value="Cancelar"/>

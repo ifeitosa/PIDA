@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.pida.DAO;
+package br.com.pida.dao;
 
 import br.com.pida.conexao.ConectarBD;
 import br.com.pida.modelo.ItemReceita;
@@ -35,7 +35,7 @@ public class OrdemProducaoDAO {
      *
      */
     public void inserirOrdem(OrdemProducao ordem) {
-        ReceitaDAO receitaDAO = new ReceitaDAO();
+        
         Connection con = ConectarBD.abrirConexao();
         String sql = "INSERT INTO OrdemProducao (Receita, Quantidade, DataRegistro) VALUES (?, ?, ?)";
         try {

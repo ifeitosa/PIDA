@@ -5,7 +5,7 @@
  */
 package br.com.pida.controle;
 
-import br.com.pida.DAO.ProdutoDAO;
+import br.com.pida.dao.ProdutoDAO;
 import br.com.pida.modelo.Lote;
 import br.com.pida.modelo.Produto;
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ public class ProdutoBean {
     }
     
     private boolean verificaCodigoDeBarras() {
-        if (!produto.codigoDeBarrasVálido()) {
+        if (!produto.codigoDeBarrasValido()) {
             FacesMessage mensagem = new FacesMessage("Código de barras inválido", "O campo código de barras deve possuir 13 dígitos.");
             FacesContext.getCurrentInstance().addMessage("Código de barras inválido", mensagem);
             return false;

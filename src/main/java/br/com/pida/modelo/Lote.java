@@ -8,7 +8,6 @@ package br.com.pida.modelo;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Date;
-import java.time.LocalDate;
 import java.util.Objects;
 
 /**
